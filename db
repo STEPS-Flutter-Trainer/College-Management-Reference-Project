@@ -1,1 +1,25 @@
+SQL Tables
 
+    Database name Student
+
+    admins table
+
+    student table
+
+    results table
+
+    . messages table
+
+Admins Table
+
+CREATE TABLE admins ( id INT NOT NULL AUTO_INCREMENT, fullname VARCHAR(30) NOT NULL, email VARCHAR(30) NOT NULL, passwords VARCHAR(30) NOT NULL, PRIMARY KEY (id) );
+student table
+
+CREATE TABLE student ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, roll INT NOT NULL UNIQUE, fullname VARCHAR(30) NOT NULL, branch VARCHAR(15) NOT NULL, email VARCHAR(30) );
+results table
+
+CREATE TABLE results ( roll INT NOT NULL, subject1 INT NOT NULL, subject2 INT NOT NULL, subject3 INT NOT NULL, total INT NOT NULL, status VARCHAR(10) NOT NULL, PRIMARY KEY (roll) );
+
+ALTER TABLE results ADD CONSTRAINT fk_results_student FOREIGN KEY (roll) REFERENCES student(roll) ON DELETE CASCADE;
+messages table
+CREATE TABLE messages ( id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, user_email VARCHAR(30) NOT NULL, user_phone VARCHAR(12) NOT NULL, user_msg TEXT NOT NULL );
